@@ -8,7 +8,7 @@ from torchvision import datasets, transforms
 from . import caltech_ucsd_birds
 from . import pascal_voc
 from .usps import USPS
-from . import NewSci
+from .newsci import NewSci
 
 
 default_dataset_roots = dict(
