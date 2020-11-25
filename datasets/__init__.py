@@ -58,6 +58,7 @@ dataset_stats = dict(
     Cifar10=DatasetStats(3, 32, 10),
     CUB200=DatasetStats(3, 224, 200),
     PASCAL_VOC=DatasetStats(3, 224, 20),
+    NewSci=DatasetStats(3, 300, 5) #by default i am going to do random crops of 300 to have squares
 )
 
 assert(set(default_dataset_roots.keys()) == set(dataset_normalization.keys()) ==
