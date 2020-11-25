@@ -17,6 +17,7 @@ default_dataset_roots = dict(
     Cifar10='./data/cifar10',
     CUB200='./data/birds',
     PASCAL_VOC='./data/pascal_voc',
+    NewSci = './data/newSci'
 )
 
 
