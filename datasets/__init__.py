@@ -8,6 +8,8 @@ from torchvision import datasets, transforms
 from . import caltech_ucsd_birds
 from . import pascal_voc
 from .usps import USPS
+from . import NewSci
+
 
 default_dataset_roots = dict(
     MNIST='./data/mnist',
@@ -17,7 +19,7 @@ default_dataset_roots = dict(
     Cifar10='./data/cifar10',
     CUB200='./data/birds',
     PASCAL_VOC='./data/pascal_voc',
-    NewSci = './data/newSci'
+    NewSci = './data/newsci'
 )
 
 
@@ -188,6 +190,24 @@ def get_dataset(state, phase):
         if phase == 'train':
             phase = 'trainval'
         return pascal_voc.PASCALVoc2007(root, phase, transforms.Compose(transform_list))
+    elif name == 'NewSci':
+        transform_list = []
+        if phase == 'train':
+            transform_list += [
+                transforms.CenterCrop([input_size, input_size]),
+                transforms.RandomHorizontalFlip(),
+            ]
+        else:
+            transform_list += [
+                transforms.CenterCrop([input_size, input_size]),
+            ]
+        transform_list += [
+            transforms.ToTensor(),
+            transforms.Normalize(*normalization),
+        ]
+        if phase == 'train':
+            phase = 'trainval'
+        return NewSci(root, phase, transforms.Compose(transform_list))
 
     else:
         raise ValueError('Unsupported dataset: %s' % state.dataset)
