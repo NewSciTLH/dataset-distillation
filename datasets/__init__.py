@@ -44,6 +44,7 @@ dataset_labels = dict(
              'deer', 'dog', 'monkey', 'horse', 'ship', 'truck'),
     CUB200=caltech_ucsd_birds.class_labels,
     PASCAL_VOC=pascal_voc.object_categories,
+    NewSci=('cat','dog','face','human','other')
 )
 
 # (nc, real_size, num_classes)
